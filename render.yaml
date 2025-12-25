@@ -1,0 +1,45 @@
+services:
+  # Backend Service
+  - type: web
+    name: agroanalytics-backend
+    runtime: python
+    region: singapore
+    plan: free
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker main:app
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: agroanalytics-db
+          property: connectionString
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: agroanalytics-frontend
+          property: url
+      - key: PYTHON_VERSION
+        value: 3.11.0
+
+  # Frontend Service
+  - type: web
+    name: agroanalytics-frontend
+    runtime: static
+    region: singapore
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: ./dist
+    envVars:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: agroanalytics-backend
+          property: url
+
+databases:
+  - name: agroanalytics-db
+    region: singapore
+    plan: free
+    databaseName: farmviz
+    user: farmviz_user
