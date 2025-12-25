@@ -59,6 +59,9 @@ export const AuthProvider = ({ children }) => {
             let detail = error.response?.data?.detail;
             if (typeof detail === 'object') detail = JSON.stringify(detail);
             const errorMessage = detail || error.message || `Registration failed at ${baseURL}${targetUrl}`;
+
+            console.log('EXTRACTED ERROR MESSAGE:', errorMessage); // Explicit log for debugging
+
             return {
                 success: false,
                 error: errorMessage
