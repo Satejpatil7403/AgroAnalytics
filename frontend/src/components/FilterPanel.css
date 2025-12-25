@@ -1,0 +1,54 @@
+.filter-panel {
+    margin-bottom: 2rem;
+}
+
+.filter-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.filter-header h3 {
+    margin: 0;
+    font-size: 1.25rem;
+}
+
+.filter-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.filter-grid .form-group {
+    width: 100%;
+    min-width: 0;
+    /* Prevent overflow */
+}
+
+.filter-grid label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.filter-grid input,
+.filter-grid select {
+    width: 100%;
+    min-width: 0;
+    /* Prevent overflow */
+}
+
+@media (max-width: 1024px) {
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,98 @@
+.csv-upload-container {
+    margin-bottom: 2rem;
+}
+
+.csv-upload-container h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.upload-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
+
+.upload-dropzone {
+    border: 2px dashed var(--border-medium);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+    transition: all var(--transition-base);
+    background: var(--bg-secondary);
+    cursor: pointer;
+}
+
+.upload-dropzone:hover {
+    border-color: var(--primary-500);
+    background: var(--primary-50);
+}
+
+.upload-dropzone.active {
+    border-color: var(--primary-500);
+    background: var(--primary-100);
+    transform: scale(1.02);
+}
+
+.upload-dropzone.has-file {
+    border-color: var(--primary-500);
+    background: var(--primary-50);
+}
+
+.upload-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.upload-text {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.upload-text strong {
+    color: var(--primary-600);
+}
+
+.file-icon {
+    font-size: 3rem;
+}
+
+.file-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1.125rem;
+}
+
+.file-size {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.upload-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+    .upload-dropzone {
+        padding: 2rem 1rem;
+    }
+
+    .upload-actions {
+        flex-direction: column;
+    }
+
+    .upload-actions button {
+        width: 100%;
+    }
+}

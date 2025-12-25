@@ -1,0 +1,85 @@
+.my-data-container {
+    width: 100%;
+}
+
+.my-data-title {
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+}
+
+.data-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.data-card {
+    padding: 1.5rem;
+    transition: all var(--transition-base);
+}
+
+.data-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-xl);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.card-header h4 {
+    margin: 0;
+    color: var(--primary-600);
+    font-size: 1.25rem;
+}
+
+.card-body {
+    margin-bottom: 1.5rem;
+}
+
+.data-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.data-row:last-child {
+    border-bottom: none;
+}
+
+.data-row .label {
+    font-weight: 600;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.data-row .value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.location-text {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+}
+
+.card-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+    .data-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,11 @@
+node_modules
+__pycache__
+.env
+.vscode
+.DS_Store
+.env.example
+dist
+coverage
+*.log
+.idea
+
