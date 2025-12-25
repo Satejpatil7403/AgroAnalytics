@@ -38,7 +38,9 @@ export const AuthProvider = ({ children }) => {
             return { success: true };
         } catch (error) {
             console.error('Login Error:', error);
-            const errorMessage = error.response?.data?.detail || error.message || 'Login failed';
+            const targetUrl = error.config?.url || 'unknown URL';
+            const baseURL = error.config?.baseURL || 'unknown BaseURL';
+            const errorMessage = error.response?.data?.detail || error.message || `Login failed at ${baseURL}${targetUrl}`;
             return {
                 success: false,
                 error: errorMessage
@@ -52,7 +54,9 @@ export const AuthProvider = ({ children }) => {
             return { success: true };
         } catch (error) {
             console.error('Registration Error:', error);
-            const errorMessage = error.response?.data?.detail || error.message || 'Registration failed';
+            const targetUrl = error.config?.url || 'unknown URL';
+            const baseURL = error.config?.baseURL || 'unknown BaseURL';
+            const errorMessage = error.response?.data?.detail || error.message || `Registration failed at ${baseURL}${targetUrl}`;
             return {
                 success: false,
                 error: errorMessage

@@ -18,6 +18,7 @@ import os
 origins = [
     "http://localhost:5173",
     "http://localhost:3000",
+    "https://agro-analytics-psi.vercel.app",
 ]
 
 if os.getenv("FRONTEND_URL"):

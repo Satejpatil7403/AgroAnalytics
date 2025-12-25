@@ -7,7 +7,7 @@ services:
     plan: free
     rootDir: backend
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:10000 main:app
+    startCommand: sh -c "gunicorn -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT main:app"
     envVars:
       - key: DATABASE_URL
         fromDatabase:
