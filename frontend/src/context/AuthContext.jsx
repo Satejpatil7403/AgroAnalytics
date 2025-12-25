@@ -37,9 +37,11 @@ export const AuthProvider = ({ children }) => {
 
             return { success: true };
         } catch (error) {
+            console.error('Login Error:', error);
+            const errorMessage = error.response?.data?.detail || error.message || 'Login failed';
             return {
                 success: false,
-                error: error.response?.data?.detail || 'Login failed'
+                error: errorMessage
             };
         }
     };
@@ -49,9 +51,11 @@ export const AuthProvider = ({ children }) => {
             await api.post('/api/auth/register', { username, password, role });
             return { success: true };
         } catch (error) {
+            console.error('Registration Error:', error);
+            const errorMessage = error.response?.data?.detail || error.message || 'Registration failed';
             return {
                 success: false,
-                error: error.response?.data?.detail || 'Registration failed'
+                error: errorMessage
             };
         }
     };
