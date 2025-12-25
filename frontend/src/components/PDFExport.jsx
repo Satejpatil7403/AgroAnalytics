@@ -15,7 +15,7 @@ const PDFExport = ({ farmers, chartsRef }) => {
             // Title
             doc.setFontSize(20);
             doc.setTextColor(40, 167, 69); // Green color
-            doc.text('FarmerViz Report', 14, 22);
+            doc.text('AgroAnalytics Report', 14, 22);
 
             doc.setFontSize(10);
             doc.setTextColor(100);
