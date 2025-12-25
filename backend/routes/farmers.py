@@ -242,13 +242,25 @@ async def upload_csv(
     try:
         # Read CSV file
         contents = await file.read()
-        df = pd.read_csv(io.StringIO(contents.decode('utf-8')))
+        
+        # Try decoding with utf-8 first, then latin-1 (common for Excel)
+        try:
+            decoded_contents = contents.decode('utf-8')
+        except UnicodeDecodeError:
+            print("UTF-8 decode failed, trying latin-1")
+            decoded_contents = contents.decode('latin-1')
+            
+        df = pd.read_csv(io.StringIO(decoded_contents))
         
         # Validate required columns
         required_columns = [
             'farmer_name', 'village_name', 'crop_type', 
             'area_acres', 'yield_kg', 'latitude', 'longitude'
         ]
+        
+        # Strip whitespace from columns to be safe
+        df.columns = df.columns.str.strip()
+        
         missing_columns = [col for col in required_columns if col not in df.columns]
         if missing_columns:
             raise HTTPException(
@@ -314,9 +326,14 @@ async def upload_csv(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail="CSV file is empty"
         )
+    except HTTPException:
+        raise
     except Exception as e:
         db.rollback()
+        import traceback
+        traceback.print_exc()
+        print(f"Error processing CSV: {e}")
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error processing CSV: {str(e)}"
+            detail=f"Error processing CSV: {str(e) or 'Unknown error'}"
         )
