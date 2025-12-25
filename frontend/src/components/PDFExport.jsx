@@ -96,7 +96,7 @@ const PDFExport = ({ farmers, chartsRef }) => {
                 styles: { fontSize: 8 }
             });
 
-            doc.save('farmerviz-report.pdf');
+            doc.save('AgroAnalytics Report.pdf');
         } catch (error) {
             console.error('Export failed:', error);
             alert('Failed to generate PDF report');

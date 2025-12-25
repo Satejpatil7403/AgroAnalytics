@@ -17,7 +17,7 @@ const DashboardPDFExport = ({ dashboardRef, stats, villageStats }) => {
             // Title Page
             doc.setFontSize(24);
             doc.setTextColor(34, 197, 94); // Green color
-            doc.text('FarmerViz Dashboard Report', pageWidth / 2, 30, { align: 'center' });
+            doc.text('AgroAnalytics Dashboard Report', pageWidth / 2, 30, { align: 'center' });
 
             doc.setFontSize(12);
             doc.setTextColor(100);
@@ -118,7 +118,7 @@ const DashboardPDFExport = ({ dashboardRef, stats, villageStats }) => {
                 styles: { fontSize: 9 }
             });
 
-            doc.save('farmerviz-dashboard-report.pdf');
+            doc.save('AgroAnalytics-Dashboard-Report.pdf');
         } catch (error) {
             console.error('Export failed:', error);
             alert('Failed to generate PDF report. Please try again.');
