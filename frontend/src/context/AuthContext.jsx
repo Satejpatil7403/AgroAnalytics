@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }) => {
             localStorage.setItem('user', JSON.stringify(userData));
             setUser(userData);
 
-            return { success: true };
+            return { success: true, user: userData };
         } catch (error) {
             console.error('Login Error:', error);
             const targetUrl = error.config?.url || 'unknown URL';
