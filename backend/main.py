@@ -15,18 +15,21 @@ app = FastAPI(
 import os
 
 # CORS middleware
-origins = [
-    "https://agro-analytics-psi.vercel.app",
-    "http://localhost:5173", 
-    "http://localhost:3000",
-]
+#origins = [
+    #"https://agro-analytics-psi.vercel.app",
+    #"http://localhost:5173", 
+    #"http://localhost:3000",
+#]
+
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
+
 
 if os.getenv("FRONTEND_URL"):
-    origins.append(os.getenv("FRONTEND_URL").rstrip("/"))
+    ALLOWED_ORIGINS.append(os.getenv("FRONTEND_URL").rstrip("/"))
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=ALLOWED_ORIGINS,
     allow_origin_regex=r"https://.*\.vercel\.app",
     allow_credentials=True,
     allow_methods=["*"],
