@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # AgroAnalytics Web Application
 
 A full-stack farmer data management system with React frontend and FastAPI backend.
