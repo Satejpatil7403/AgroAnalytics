@@ -56,7 +56,9 @@ export const AuthProvider = ({ children }) => {
             console.error('Registration Error:', error);
             const targetUrl = error.config?.url || 'unknown URL';
             const baseURL = error.config?.baseURL || 'unknown BaseURL';
-            const errorMessage = error.response?.data?.detail || error.message || `Registration failed at ${baseURL}${targetUrl}`;
+            let detail = error.response?.data?.detail;
+            if (typeof detail === 'object') detail = JSON.stringify(detail);
+            const errorMessage = detail || error.message || `Registration failed at ${baseURL}${targetUrl}`;
             return {
                 success: false,
                 error: errorMessage
